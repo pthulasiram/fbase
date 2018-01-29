@@ -1,0 +1,40 @@
+<div fxLayout="row wrap">
+  <div fxFlex.gt-xs="75%" fxFlexOffset.xs="5%" [style.margin-top.px]="50">
+    <mat-card align="center">
+      <mat-card-title style="font-size:28px">{{result.question}}</mat-card-title>
+      <mat-card-content>
+        <div fxFlexOffset.xs="1%" align="center">
+          <div *ngIf="data">
+            <div fxShow="true" fxShow.gt-md="true">
+              <div fxHide fxShow.gt-sm>
+                <ngx-charts-pie-grid [view]="lg" [scheme]="colorScheme" [results]="data" (select)="onSelect($event)">
+                </ngx-charts-pie-grid>
+              </div>
+            </div>
+            <div fxShow="true" fxShow.gt-xs="true" fxShow.gt-md="false">
+              <ngx-charts-pie-grid [view]="sm" [scheme]="colorScheme" [results]="data" (select)="onSelect($event)">
+
+              </ngx-charts-pie-grid>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+      <!-- <mat-card-footer>
+          <share-buttons show="8" [showCount]="true"></share-buttons>
+
+      </mat-card-footer> -->
+    </mat-card>
+    <!-- <h3> You may also interested </h3>
+    <mat-card fxFlexAlign="space-between center" *ngFor="let poll of polls" [style.margin-top.px]="5">
+      <div>
+        <span>{{poll.question}}
+
+        </span>
+      </div>
+      <div align="right">
+        <button mat-button [routerLink]="['/poll-edit',poll.key]">Edit</button>
+      </div>
+    </mat-card> -->
+  </div>
+
+</div>

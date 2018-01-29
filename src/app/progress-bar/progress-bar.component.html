@@ -1,0 +1,15 @@
+<div fxFlexOffset.xs="1%" align="center">
+  <div *ngIf="data">
+    <div fxShow="true" fxShow.gt-md="true">
+      <div fxHide fxShow.gt-sm>
+        <ngx-charts-pie-grid [view]="lg" [scheme]="colorScheme" [results]="data" (select)="onSelect($event)">
+        </ngx-charts-pie-grid>
+      </div>
+    </div>
+    <div fxShow="true" fxShow.gt-xs="true" fxShow.gt-md="false">
+      <ngx-charts-pie-grid [view]="sm" [scheme]="colorScheme" [results]="data" (select)="onSelect($event)">
+
+      </ngx-charts-pie-grid>
+    </div>
+  </div>
+</div>

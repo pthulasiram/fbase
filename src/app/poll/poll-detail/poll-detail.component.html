@@ -1,0 +1,16 @@
+<div fxLayout="row wrap">
+  <div fxFlex.gt-xs="75%" fxFlexOffset.xs="5%" [style.margin-top.px]="100" fxFlexOrder="1">
+    <mat-card align="center">
+       <app-loadding *ngIf="!poll"></app-loadding>
+      <mat-card-content *ngIf="poll">
+        {{poll.question}}
+        <mat-card-actions [style.margin-top.px]="10">
+          <div fxFlexAlign="space-between">
+            <button mat-raised-button *ngFor="let opt of poll.options; let i=index;" color='{{colors[i]}}' (click)= "castVote(poll,opt)">
+              {{opt}}</button>
+          </div>
+        </mat-card-actions>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

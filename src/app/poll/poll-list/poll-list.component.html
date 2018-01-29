@@ -1,0 +1,15 @@
+<h3>Polls</h3>
+<app-loadding *ngIf="!polls$"></app-loadding>
+<mat-card fxFlexAlign="space-between center" *ngFor="let poll of polls$ | async">
+    <div>
+        <span>{{poll.question}}
+
+        </span>
+    </div>
+    <div align="right">
+        <button mat-button [routerLink]="['/poll-edit',poll.key]">Edit</button>
+    </div>
+</mat-card>
+<button mat-fab [routerLink]="['/poll-edit/new']">
+    <mat-icon> <i class="material-icons">add</i></mat-icon>
+</button>

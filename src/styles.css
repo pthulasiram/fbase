@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway');
+@import '~font-awesome/css/font-awesome.min.css';
+
+body {
+    
+/* font-family: 'Raleway', sans-serif; */
+    font-size: 21px;
+    flex:auto;
+}
+.mat-card-content {
+    font-size: 18px;
+}
+.container {
+    margin: 5px;
+}

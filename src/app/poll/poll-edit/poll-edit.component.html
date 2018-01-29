@@ -1,0 +1,92 @@
+<h1>
+  Poll Edit</h1>
+<mat-card>
+
+
+  <mat-card-content>
+    <form [formGroup]="pollForm" novalidate (keydown.enter)="$event.preventDefault()">
+      <mat-input-container style="width:70%">
+        <input matInput formControlName="question" placeholder="Enter Poll Question">
+      </mat-input-container>
+
+
+      <!-- <label *ngIf="userName.invalid" [ngClass]="'error'"> Name is required with 10 max character. </label> -->
+
+      <div formArrayName="options" *ngFor="let option of options.controls; index as idx">
+        <mat-input-container style="width:40%">
+          <input matInput [formControlName]="idx" placeholder="Enter Option {{idx}}" (keydown.tab)="addOption()">
+        </mat-input-container>
+        <button mat-raised-button color="warn" type="button" (click)="deleteOption(idx)">
+          <i class="material-icons">indeterminate_check_box</i>
+        </button>
+        <button mat-raised-button align="right" color="primary" type="button" (click)="addOption()">
+            <i class="material-icons">add</i>
+          </button>
+      </div>
+      <!-- 
+      <div formArrayName="chips" *ngFor="let option of options.controls; index as idx">
+          <mat-input-container style="width:40%">
+            <input matInput [formControlName]="idx" placeholder="Enter Option {{idx}}" (click)="addOption()">
+          </mat-input-container>
+          <button mat-raised-button color="warn" type="button" (click)="deleteOption(idx)">
+            <i class="material-icons">indeterminate_check_box</i>
+          </button>
+        </div> -->
+   </form>
+   <mat-form-field class="snug-chip-list">
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let snug of snugs" [selectable]="selectable"
+                 [removable]="removable" (remove)="remove(snug)">
+          {{snug}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="Enter snug"
+               [matChipInputFor]="chipList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="addOnBlur"
+               (matChipInputTokenEnd)="add($event)" />
+      </mat-chip-list>
+    </mat-form-field>
+
+    <mat-card-actions align="right" *ngIf="options.length > 0">
+        <button mat-raised-button color="primary" (click)="savePoll(pollForm.value, pollForm.valid)">Save</button>
+        <button mat-raised-button color="warn" (click)="removePoll(pollForm.value)">Remove</button>
+      </mat-card-actions>
+  </mat-card-content>
+
+
+</mat-card>
+<!--  
+<mat-card *ngIf='poll'>
+  <!-- <mat-card-header>
+        <mat-card-title>Title</mat-card-title>
+        <mat-card-subtitle>Subtitle</mat-card-subtitle>
+    </mat-card-header>
+    <img matCardImage src="Card wide image source"> -->
+<!-- 
+  <mat-card-content>
+    <mat-input-container style="width:80%">
+      <input matInput type="text" [(ngModel)]="poll.question" matInput placeholder="Enter Question ">
+    </mat-input-container>
+    <div *ngFor="let opt of poll.options, let i = index" [attr.data-index]="i">
+      <mat-input-container style="width:40%">
+        <input matInput type="text" [ngModel]="opt" matInput placeholder="Option {{i}} ">
+      </mat-input-container>
+    </div>
+
+  </mat-card-content>
+  <mat-card-actions align="right">
+    <button mat-raised-button color="primary" (click)="savePoll(poll)">Save</button>
+    <!-- <button mat-raised-button color="accent" (click)="updatePoll(poll)">Update</button> -->
+<!-- <button mat-raised-button color="warn" (click)="removePoll()">Remove</button>
+
+  </mat-card-actions>
+
+
+  
+
+
+  <!-- <mat-card-footer>
+        Footer
+    </mat-card-footer> -->
+<!-- </mat-card>  -->

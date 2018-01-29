@@ -1,0 +1,7 @@
+<div fxFlex.xs="75%" fxFlexOrder.xs="2" fxFlexOffset.xs="15%">
+    <app-loadding *ngIf="!showChart"></app-loadding>
+    <div *ngIf="showChart">
+        <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType" (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+    </div>
+</div>
